@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        body{
+            background: rgb(235,160,156);
+            background: linear-gradient(90deg, rgba(235,160,156,1) 9%, rgba(249,172,134,1) 100%); 
+        }
+        h1{
+            text-align: center;
+            {% comment %} background-color: white; {% endcomment %}
+            margin-bottom: 40px;
+            border-radius: 10px;
+            color: black;
+         }
+         #container{
+            width: 50vw;
+            border: 2px solid rgb(235,160,156);
+            border-radius: 15px;
+            box-shadow: 3px 5px 10px black;
+            margin-top: 15vh;
+            margin-left: 25vw;
+            display: flex;
+            justify-content:space-between;
+            flex-direction: column;
+            align-items: center;   
+            {% comment %} background: rgb(240,255,255);
+            background: radial-gradient(circle, rgba(240,255,255,1) 0%, rgba(0,191,255,1) 100%) {% endcomment %}
+         
+         }
+         .one{
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+            width:50%;
+            display:flex;
+            flex-direction: row;
+            text-align: center;
+            justify-self:space-around ;
+         }
+         
+    </style>
+  </head>
+  <body>
+    <form  method="POST" action="solution">
+        {% csrf_token %}
+        <div class="text-bg-warning p-3" id='container'>
+            <h1 class="placeholder col-12 bg-warning"><b>LOAN_PREDICTER</b></h1>
+            
+
+
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Loan Limit</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='loan_limit'>
+                <option selected>Choose...</option>
+                <option value="0">CF</option>
+                <option value="1">NCF</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Gender</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='Gender'>
+                <option selected>Choose...</option>
+                <option value="0">Not To tell</option>
+                <option value="1">Male</option>
+                <option value="3">Female</option>
+                <option value="2">Joint</option>
+                </select>
+            </div>
+
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Approved in advance</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='approv_in_adv'>
+                <option selected>Choose...</option>
+                <option value="0">No Pre</option>
+                <option value="1">Pre</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Loan Type</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='loan_type'>
+                <option selected>Choose...</option>
+                <option value="0">Type 1</option>
+                <option value="1">Type 2</option>
+                <option value="2">Type 3</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Loan Purpose</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='loan_purpose'>
+                <option selected>Choose...</option>
+                <option value="0">P1</option>
+                <option value="1">P2</option>
+                <option value="2">P3</option>
+                <option value="3">P4</option>                
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Credit Worthiness</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='Credit_Worthiness'>
+                <option selected>Choose...</option>
+                <option value="0">L1</option>
+                <option value="1">L2</option>
+                </select>
+            </div>
+
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Open Credit</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='open_credit'>
+                <option selected>Choose...</option>
+                <option value="0">nopc</option>
+                <option value="1">opc</option>
+                </select>
+            </div>
+
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Business or Commercial</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='business_or_commercial'>
+                <option selected>Choose...</option>
+                <option value="0">nob/c</option>
+                <option value="1">b/c</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon1"><b>Loan Amount</b></button>
+                <input type="text" class="form-control" placeholder="Enter Loan Amount" aria-label="Example text with button addon" name='loan_amount' aria-describedby="button-addon1">
+              </div>
+
+              <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon1"><b>Rate of Interest</b></button>
+                <input type="text" class="form-control" placeholder="Enter Rate of Interest" aria-label="Example text with button addon" name='rate_of_interest' aria-describedby="button-addon1">
+              </div>
+
+              <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon1"><b>Interest Rate Spread</b></button>
+                <input type="text" class="form-control" placeholder="Enter Interest Rate Spread" aria-label="Example text with button addon" 
+                name='interest_rate_spread' aria-describedby="button-addon1">
+              </div>
+
+              <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon1"><b>Upfront Charges</b></button>
+                <input type="text" class="form-control" placeholder="Enter Upfront Charges" aria-label="Example text with button addon" name='upfront_charges' aria-describedby="button-addon1">
+              </div>
+
+              <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon1"><b>Term</b></button>
+                <input type="text" class="form-control" placeholder="Enter Term" aria-label="Example text with button addon" name='term' aria-describedby="button-addon1">
+              </div>
+
+              <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Neg Ammortization</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon" 
+                name='neg_ammortization'>
+                <option selected>Choose...</option>
+                <option value="0">not_neg</option>
+                <option value="1">neg_amm</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Interest Only</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='interest_only'>
+                <option selected>Choose...</option>
+                <option value="0">not_int</option>
+                <option value="1">int_only</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Lump Sum Payment</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='lump_sum_payment'>
+                <option selected>Choose...</option>
+                <option value="0">not_lpsm</option>
+                <option value="1">lpsm</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon1"><b>Property Value</b></button>
+                <input type="text" class="form-control" placeholder="Enter Property Value" aria-label="Example text with button addon" name='property_value' aria-describedby="button-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Construction Type</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='construction_type'>
+                <option selected>Choose...</option>
+                <option value="0">sb</option>
+                <option value="1">mh</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Occupancy Type</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='occupancy_type'>
+                <option selected>Choose...</option>
+                <option value="0">pr</option>
+                <option value="1">sr</option>
+                <option value="2">ir</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Secured By</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='secured_by'>
+                <option selected>Choose...</option>
+                <option value="0">Home</option>
+                <option value="1">Land</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Total Units</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon" 
+                name='total_units'>
+                <option selected>Choose...</option>
+                <option value="0">1U</option>
+                <option value="1">2U</option>
+                <option value="2">3U</option>
+                <option value="3">4U</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon1"><b>Income</b></button>
+                <input type="text" class="form-control" placeholder="Enter Income" aria-label="Example text with button addon" name='income' aria-describedby="button-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Credit Type</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon"
+                name='credit_type'>
+                <option selected>Choose...</option>
+                <option value="0">EXP</option>
+                <option value="1">EQUI</option>
+                <option value="2">CRIF</option>
+                <option value="3">CIB</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon1"><b>Credit Score</b></button>
+                <input type="text" class="form-control" placeholder="Enter Credit Score" aria-label="Example text with button addon"  name='credit_score' aria-describedby="button-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>CO-Applicant Credit Type</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon" name='co_applicant_credit_type'>
+                <option selected>Choose...</option>
+                <option value="0">CIB</option>
+                <option value="1">EXP</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Age</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon" name='age'>
+                <option selected>Choose...</option>
+                <option value="0"><25</option>
+                <option value="1">25-34</option>
+                <option value="2">35-44</option>
+                <option value="3">45-54</option>
+                <option value="4">55-64</option>
+                <option value="5">65-74</option>
+                <option value="6">>74</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Submission of Application</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon" name='submission_of_application'>
+                <option selected>Choose...</option>
+                <option value="0">to_inst</option>
+                <option value="1">not_inst</option>
+                </select>
+            </div>
+
+            
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon1"><b>LTV</b></button>
+                <input type="text" class="form-control" placeholder="LTV" aria-label="Example text with button addon" aria-describedby="button-addon1" name='ltv'>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Region</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon" name='region'>
+                <option selected>Choose...</option>
+                <option value="0">South</option>
+                <option value="1">North</option>
+                <option value="2">Central</option>
+                <option value="3">North-East</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button"><b>Security Type</b></button>
+                <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon" name='security_type'>
+                <option selected>Choose...</option>
+                <option value="0">Direct</option>
+                <option value="1">Indirect</option>
+                </select>
+            </div>
+
+            
+            <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon1"><b>dtir1</b></button>
+                <input type="text" class="form-control" placeholder="dtir1" aria-label="Example text with button addon" aria-describedby="button-addon1" name='dtir1g'>
+            </div>
+
+        </div>
+        <div class='text-center py-4' id="button">
+            <button class="btn btn-warning" type="Submit"><b>Submit Now</b></button>
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
